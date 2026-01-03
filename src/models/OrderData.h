@@ -10,13 +10,15 @@ struct OrderData
 
     // Seller & Party
     QString sellerName;
-    QString sellerId;
+    int sellerId;
     QString partyId;
     QString partyName;
 
     // Order identity
-    QString jobNo;
-    QString orderNo;
+    int jobId = 0;
+    int orderId = 0;
+    int sellerOrderSeq = 0;
+
 
     // Client hierarchy
     QString clientId;
@@ -67,8 +69,7 @@ struct OrderData
     double stPrice = 0.0;
 
     // Design
-    QString designNo1;
-    QString designNo2;
+    QString designNo;
     QString image1Path;
     QString image2Path;
 
@@ -97,6 +98,15 @@ struct OrderData
 
     // State
     int isSaved = 0;
+
+    // 🔑 Workflow status
+    QString designerStatus = "Pending";   // Pending / Started / Completed
+
+    // 🔐 Centralized rule
+    bool isEditable() const
+    {
+        return designerStatus.compare("Pending", Qt::CaseInsensitive) == 0;
+    }
 };
 
 #endif // ORDERDATA_H

@@ -23,8 +23,20 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuRoles">
+    <property name="title">
+     <string>Roles</string>
+    </property>
+    <addaction name="actionSwitch_Role"/>
+   </widget>
+   <addaction name="menuRoles"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSwitch_Role">
+   <property name="text">
+    <string>Switch Role</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

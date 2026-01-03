@@ -161,66 +161,86 @@ bool DatabaseManager::createTables()
     }
 
     if (!query.exec(R"(
-        CREATE TABLE IF NOT EXISTS "order_book_detail" (
-            "id"	INTEGER NOT NULL UNIQUE,
-            "sellerName"	TEXT NOT NULL,
-            "sellerId"	TEXT NOT NULL,
-            "partyId"	TEXT NOT NULL,
-            "partyName"	TEXT NOT NULL,
-            "jobNo"	TEXT NOT NULL,
-            "orderNo"	TEXT NOT NULL,
-            "clientId"	TEXT,
-            "agencyId"	TEXT,
-            "shopId"	TEXT,
-            "reteailleId"	TEXT,
-            "starId"	TEXT,
-            "address"	TEXT,
-            "city"	TEXT,
-            "state"	TEXT,
-            "country"	TEXT,
-            "orderDate"	TEXT NOT NULL,
-            "deliveryDate"	TEXT NOT NULL,
-            "productName"	TEXT,
-            "productPis"	INTEGER,
-            "approxProductWt"	REAL,
-            "metalPrice"	REAL,
-            "metalName"	TEXT,
-            "metalPurity"	TEXT,
-            "metalColor"	TEXT,
-            "sizeNo"	REAL,
-            "sizeMM"	REAL,
-            "length"	REAL,
-            "width"	REAL,
-            "height"	REAL,
-            "diaPacific"	TEXT,
-            "diaPurity"	TEXT,
-            "diaColor"	TEXT,
-            "diaPrice"	REAL,
-            "stPacific"	TEXT,
-            "stPurity"	TEXT,
-            "stColor"	TEXT,
-            "stPrice"	REAL,
-            "designNo1"	TEXT,
-            "designNo2"	TEXT,
-            "image1Path"	TEXT,
-            "image2Path"	TEXT,
-            "metalCertiName"	TEXT,
-            "metalCertiType"	TEXT,
-            "diaCertiName"	TEXT,
-            "diaCertiType"	TEXT,
-            "pesSaki"	TEXT,
-            "chainLock"	TEXT,
-            "polish"	TEXT,
-            "settingLebour"	TEXT,
-            "metalStemp"	TEXT,
-            "paymentMethod"	TEXT,
-            "totalAmount"	REAL,
-            "advance"	REAL,
-            "remaining"	REAL,
-            "note"	TEXT,
-            "extraDetail"	TEXT,
-            "isSaved"	INTEGER DEFAULT 0,
-            PRIMARY KEY("id" AUTOINCREMENT)
+        CREATE TABLE IF NOT EXISTS order_book_detail (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+            order_id INTEGER NOT NULL,
+            job_id INTEGER NOT NULL,
+
+            sellerName TEXT NOT NULL,
+            sellerId TEXT NOT NULL,
+
+            partyId TEXT NOT NULL,
+            partyName TEXT NOT NULL,
+
+            clientId TEXT,
+            agencyId TEXT,
+            shopId TEXT,
+            reteillerId TEXT,
+
+            starId TEXT,
+            address TEXT,
+            city TEXT,
+            state TEXT,
+            country TEXT,
+
+            orderDate TEXT NOT NULL,
+            deliveryDate TEXT NOT NULL,
+
+            productName TEXT,
+            productPis INTEGER,
+
+            approxProductWt REAL,
+            approxDiamondWt REAL,
+
+            metalPrice REAL,
+            metalName TEXT,
+            metalPurity TEXT,
+            metalColor TEXT,
+
+            sizeNo REAL,
+            sizeMM REAL,
+            length REAL,
+            width REAL,
+            height REAL,
+
+            diaPacific TEXT,
+            diaPurity TEXT,
+            diaColor TEXT,
+            diaPrice REAL,
+
+            stPacific TEXT,
+            stPurity TEXT,
+            stColor TEXT,
+            stPrice REAL,
+
+            designNo TEXT,
+            image1Path TEXT,
+            image2Path TEXT,
+
+            metalCertiName TEXT,
+            metalCertiType TEXT,
+            diaCertiName TEXT,
+            diaCertiType TEXT,
+
+            pesSaki TEXT,
+            chainLock TEXT,
+            polish TEXT,
+            settingLebour TEXT,
+            metalStemp TEXT,
+
+            paymentMethod TEXT,
+            totalAmount REAL,
+            advance REAL,
+            remaining REAL,
+
+            note TEXT,
+            extraDetail TEXT,
+
+            isSaved INTEGER DEFAULT 0,
+
+            FOREIGN KEY (order_id) REFERENCES orders(order_id),
+            FOREIGN KEY (job_id) REFERENCES jobs(job_id)
         );
     )")) {
         qCritical() << "seller_profile table error:" << query.lastError();
@@ -228,16 +248,89 @@ bool DatabaseManager::createTables()
     }
 
     if (!query.exec(R"(
-        CREATE TABLE IF NOT EXISTS "order_status" (
-            "jobNo" TEXT PRIMARY KEY,
+        CREATE TABLE IF NOT EXISTS order_status (
+            job_id INTEGER PRIMARY KEY,
 
-            "Designer" TEXT NOT NULL DEFAULT 'Pending',
-            "Manufacturer" TEXT NOT NULL DEFAULT 'Pending',
-            "Accountant" TEXT NOT NULL DEFAULT 'Pending',
+            Designer TEXT NOT NULL DEFAULT 'Pending',
+            Manufacturer TEXT NOT NULL DEFAULT 'Pending',
+            Accountant TEXT NOT NULL DEFAULT 'Pending',
 
-            "Order_Note" TEXT,
-            "Design_Note" TEXT,
-            "Quality_Note" TEXT
+            Order_Note TEXT,
+            Design_Note TEXT,
+            Quality_Note TEXT,
+
+            FOREIGN KEY (job_id) REFERENCES jobs(job_id)
+        );
+    )")) {
+        qCritical() << "seller_profile table error:" << query.lastError();
+        return false;
+    }
+    if (!query.exec(R"(
+        CREATE TABLE IF NOT EXISTS jobs (
+            job_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        );
+    )")) {
+        qCritical() << "seller_profile table error:" << query.lastError();
+        return false;
+    }
+
+    if (!query.exec(R"(
+        CREATE TABLE IF NOT EXISTS seller_order_counter (
+            seller_id TEXT PRIMARY KEY,
+            last_order_no INTEGER NOT NULL DEFAULT 0
+        );
+    )")) {
+        qCritical() << "seller_profile table error:" << query.lastError();
+        return false;
+    }
+
+    if (!query.exec(R"(
+        CREATE TABLE IF NOT EXISTS orders (
+            order_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            job_id INTEGER NOT NULL,
+            seller_id TEXT NOT NULL,
+            seller_order_seq INTEGER NOT NULL,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+
+            UNIQUE (seller_id, seller_order_seq),
+            FOREIGN KEY (job_id) REFERENCES jobs(job_id)
+        );
+    )")) {
+        qCritical() << "seller_profile table error:" << query.lastError();
+        return false;
+    }
+
+    if (!query.exec(R"(
+        CREATE TABLE IF NOT EXISTS casting_entry (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+            job_id INTEGER NOT NULL,
+            order_id INTEGER,
+
+            casting_date TEXT NOT NULL,
+            casting_name TEXT NOT NULL,
+            pcs INTEGER,
+
+            -- Issue section
+            issue_metal_name TEXT,
+            issue_metal_purity TEXT,
+            issue_metal_wt REAL,
+            issue_diamond_pcs INTEGER,
+            issue_diamond_wt REAL,
+
+            -- Receive section
+            receive_runner_wt REAL,
+            receive_product_wt REAL,
+            receive_diamond_pcs INTEGER,
+            receive_diamond_wt REAL,
+
+            -- Meta
+            accountant_id INTEGER,
+            status TEXT DEFAULT 'OPEN',
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+
+            FOREIGN KEY(job_id) REFERENCES jobs(id)
         );
     )")) {
         qCritical() << "seller_profile table error:" << query.lastError();

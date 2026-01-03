@@ -19,6 +19,12 @@ private slots:
     void openCreateUser();
     void openViewUsers(); // for later
 
+    void openOrderList();
+
+    void changeRole();
+
+
+
 private:
     Ui::AdminWindow *ui;
 };

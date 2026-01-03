@@ -45,8 +45,13 @@ set(SOURCES
     src/database/UserRepository.cpp
     src/database/databaseutils.cpp
 
+    # # ---- Models ----
+    src/models/imageclicklabel.cpp
+
     # # ---- Common ----
     src/common/SessionManager.cpp
+    src/common/rolewindowfactory.cpp
+    src/common/switchroledialog.cpp
 
     # # ---- Admin ----
     src/admin/usercreationwidget.cpp
@@ -54,7 +59,14 @@ set(SOURCES
     src/admin/changepassworddialog.cpp
 
     # # ---- Seller ----
-    src/seller/orderdialog.cpp
+    src/seller/orderwidget.cpp
+    src/seller/orderlistwidget.cpp
+
+    # # ---- Accountant ----
+    src/accountant/castingwidget.cpp
+    src/accountant/castinglistwidget.cpp
+
+
 )
 
 set(HEADERS
@@ -80,10 +92,14 @@ set(HEADERS
     src/models/UserPaymentView.h
     src/models/OrderData.h
     src/models/OrderStatusData.h
+    src/models/imageclicklabel.h
+    src/models/CastingData.h
 
     # # ---- Common ----
     src/common/SessionManager.h
     src/common/Role.h
+    src/common/rolewindowfactory.h
+    src/common/switchroledialog.h
 
     # # ---- Admin ----
     src/admin/usercreationwidget.h
@@ -91,7 +107,14 @@ set(HEADERS
     src/admin/changepassworddialog.h
 
     # # ---- Seller ----
-    src/seller/orderdialog.h
+    src/seller/orderwidget.h
+    src/seller/orderlistwidget.h
+
+    # # ---- Accountant ----
+    src/accountant/castingwidget.h
+    src/accountant/castinglistwidget.h
+
+
 )
 
 set(UI_FILES
@@ -105,6 +128,11 @@ set(UI_FILES
     ui/viewusers.ui
     ui/changepassword.ui
     ui/order.ui
+    ui/orderlist.ui
+    ui/casting.ui
+    ui/castinglist.ui
+
+
 )
 
 # -------------------------------------------------
@@ -114,10 +142,7 @@ qt_add_executable(LuxeMineERP
     WIN32
     ${SOURCES}
     ${HEADERS}
-    ${UI_FILES}
-
-    # # ---- not in any use ----
-    src/models/imageclicklabel.h src/models/imageclicklabel.cpp
+    ${UI_FILES} 
 )
 
 # -------------------------------------------------
@@ -135,6 +160,9 @@ target_link_libraries(LuxeMineERP
 # -------------------------------------------------
 target_include_directories(LuxeMineERP PRIVATE
     src
+    src/models
+    src/common
+    src/database
 )
 
 # -------------------------------------------------

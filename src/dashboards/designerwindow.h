@@ -15,6 +15,9 @@ public:
     explicit DesignerWindow(QWidget *parent = nullptr);
     ~DesignerWindow();
 
+private slots:
+    void changeRole();
+
 private:
     Ui::DesignerWindow *ui;
 };

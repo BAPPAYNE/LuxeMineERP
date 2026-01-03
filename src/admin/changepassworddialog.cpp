@@ -10,7 +10,6 @@ ChangePasswordDialog::ChangePasswordDialog(int userId, QWidget *parent)
     ui(new Ui::ChangePasswordDialog)
 {
     ui->setupUi(this);
-
     connect(ui->changeButton, &QPushButton::clicked,
             this, &ChangePasswordDialog::onChangeClicked);
 

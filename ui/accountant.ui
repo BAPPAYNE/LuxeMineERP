@@ -13,7 +13,13 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QMdiArea" name="mdiArea"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -23,8 +29,32 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuRoles">
+    <property name="title">
+     <string>Roles</string>
+    </property>
+    <addaction name="actionSwitch_Role"/>
+   </widget>
+   <widget class="QMenu" name="menuOrders">
+    <property name="title">
+     <string>Orders</string>
+    </property>
+    <addaction name="actionOrders_List"/>
+   </widget>
+   <addaction name="menuRoles"/>
+   <addaction name="menuOrders"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSwitch_Role">
+   <property name="text">
+    <string>Switch Role</string>
+   </property>
+  </action>
+  <action name="actionOrders_List">
+   <property name="text">
+    <string>Orders List</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

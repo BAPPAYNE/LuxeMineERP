@@ -64,7 +64,7 @@ void LoginWindow::onLoginClicked()
                               "Invalid username or password.");
         return;
     }
-
+    // qDebug()<<user.id;
     // Store basic user
     SessionManager::setCurrentUser(user);
 

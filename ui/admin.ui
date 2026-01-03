@@ -43,7 +43,21 @@
     <addaction name="actionCreate_Users"/>
     <addaction name="actionView_Users"/>
    </widget>
+   <widget class="QMenu" name="menuRoles">
+    <property name="title">
+     <string>Roles</string>
+    </property>
+    <addaction name="actionSwitch_Role"/>
+   </widget>
+   <widget class="QMenu" name="menuOrders">
+    <property name="title">
+     <string>Orders</string>
+    </property>
+    <addaction name="actionOrder_List"/>
+   </widget>
+   <addaction name="menuRoles"/>
    <addaction name="menuUsers"/>
+   <addaction name="menuOrders"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionCreate_Users">
@@ -54,6 +68,16 @@
   <action name="actionView_Users">
    <property name="text">
     <string>View Users</string>
+   </property>
+  </action>
+  <action name="actionSwitch_Role">
+   <property name="text">
+    <string>Switch Role</string>
+   </property>
+  </action>
+  <action name="actionOrder_List">
+   <property name="text">
+    <string>Order List</string>
    </property>
   </action>
  </widget>

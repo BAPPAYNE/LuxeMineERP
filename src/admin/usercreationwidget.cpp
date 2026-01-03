@@ -5,6 +5,7 @@
 #include "common/SessionManager.h"
 
 #include <QMessageBox>
+#include <QMdiSubWindow>
 
 UserCreationWidget::UserCreationWidget(QWidget *parent)
     : QWidget(parent),
@@ -131,8 +132,46 @@ void UserCreationWidget::onCreateUserClicked()
         return;
     }
 
-    QMessageBox::information(this, "Success",
-                             "User created successfully.");
+    auto reply = QMessageBox::question(
+        this,
+        "User Created",
+        "User created successfully.\n\n"
+        "Do you want to create another user?",
+        QMessageBox::Yes | QMessageBox::No
+        );
 
-    close(); // close MDI subwindow
+    if (reply == QMessageBox::Yes) {
+        resetForm();
+    } else {
+        if (auto *sub = qobject_cast<QMdiSubWindow *>(parentWidget())) {
+            sub->close();
+        }
+    }
 }
+
+void UserCreationWidget::resetForm()
+{
+    // Login fields
+    ui->usernameLineEdit->clear();
+    ui->passwordLineEdit->clear();
+    ui->activeCheckBox->setChecked(true);
+
+    // Employee fields
+    ui->fullNameLineEdit->clear();
+    ui->accountNoLineEdit->clear();
+    ui->baseSalarySpinBox->setValue(0.0);
+    ui->workingHoursSpinBox->setValue(0.0);
+
+    // Roles
+    ui->rolesListWidget->clearSelection();
+
+    // Seller fields
+    ui->sellingPercentageSpinBox->setValue(0.0);
+    ui->sellerGroupBox->setEnabled(false);
+
+    // UX: focus first field
+    ui->usernameLineEdit->setFocus();
+}
+
+
+

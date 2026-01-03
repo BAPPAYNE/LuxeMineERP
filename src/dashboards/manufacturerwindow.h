@@ -15,6 +15,9 @@ public:
     explicit ManufacturerWindow(QWidget *parent = nullptr);
     ~ManufacturerWindow();
 
+private slots:
+    void changeRole();
+
 private:
     Ui::ManufacturerWindow *ui;
 };

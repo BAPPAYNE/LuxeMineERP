@@ -2,6 +2,7 @@
 #define USERCREATIONWIDGET_H
 
 #include <QWidget>
+#include <QCloseEvent>
 
 namespace Ui {
 class UserCreationWidget;
@@ -21,6 +22,7 @@ private slots:
 
 private:
     bool isSellerSelected() const;
+    void resetForm();
 
 private:
     Ui::UserCreationWidget *ui;

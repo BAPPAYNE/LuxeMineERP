@@ -280,7 +280,7 @@ bool UserRepository::updateMonthlyPayment(
         qCritical() << "Failed to start payment transaction";
         return false;
     }
-    qDebug()<<"here" << employeeId  ;
+    // qDebug()<<"here" << employeeId  ;
     // Check if record exists
     QSqlQuery check(db);
     check.prepare(R"(

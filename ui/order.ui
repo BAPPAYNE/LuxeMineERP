@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>OrderDialog</class>
- <widget class="QDialog" name="OrderDialog">
+ <class>OrderWidget</class>
+ <widget class="QWidget" name="OrderWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1159</width>
-    <height>518</height>
+    <width>1101</width>
+    <height>449</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>6</number>
+   </property>
+   <property name="topMargin">
+    <number>6</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>6</number>
+   </property>
+   <property name="spacing">
+    <number>2</number>
+   </property>
    <item row="0" column="0">
     <widget class="QLabel" name="sellerNameLabel">
      <property name="minimumSize">
@@ -213,6 +228,31 @@
       <string>PARTY NAME</string>
      </property>
     </widget>
+   </item>
+   <item row="1" column="1" colspan="4">
+    <widget class="QLineEdit" name="partyNameLineEdit">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <widget class="QLineEdit" name="partyIdLineEdit"/>
    </item>
    <item row="1" column="6">
     <widget class="QLabel" name="orderNoLabel">
@@ -676,6 +716,9 @@
      </property>
     </widget>
    </item>
+   <item row="5" column="3">
+    <widget class="QDoubleSpinBox" name="metalPriceDoubleSpinBox"/>
+   </item>
    <item row="5" column="4">
     <widget class="QLabel" name="sizeNoLabel">
      <property name="minimumSize">
@@ -695,6 +738,9 @@
      </property>
     </widget>
    </item>
+   <item row="5" column="5">
+    <widget class="QDoubleSpinBox" name="sizeNoDoubleSpinBox"/>
+   </item>
    <item row="5" column="6">
     <widget class="QLabel" name="designNoLabel">
      <property name="minimumSize">
@@ -711,6 +757,22 @@
      </property>
      <property name="text">
       <string>DESIGN NO.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="7" colspan="2">
+    <widget class="QLineEdit" name="designNoLineEdit">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
      </property>
     </widget>
    </item>
@@ -835,6 +897,16 @@
      </property>
     </widget>
    </item>
+   <item row="6" column="5">
+    <widget class="QDoubleSpinBox" name="sizeMMDoubleSpinBox"/>
+   </item>
+   <item row="6" column="6" rowspan="5" colspan="3">
+    <widget class="ImageClickLabel" name="imageLabel1">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </item>
    <item row="6" column="10" colspan="4">
     <widget class="QLabel" name="extraDetailLabel">
      <property name="minimumSize">
@@ -951,6 +1023,9 @@
      </property>
     </widget>
    </item>
+   <item row="7" column="5">
+    <widget class="QDoubleSpinBox" name="lengthDoubleSpinBox"/>
+   </item>
    <item row="7" column="9">
     <widget class="QLabel" name="pesSakiLabel">
      <property name="minimumSize">
@@ -1041,6 +1116,9 @@ LEBOUR</string>
      </property>
     </widget>
    </item>
+   <item row="8" column="1">
+    <widget class="QSpinBox" name="productPisSpinBox"/>
+   </item>
    <item row="8" column="2">
     <widget class="QLabel" name="metalColorLabel">
      <property name="minimumSize">
@@ -1094,6 +1172,9 @@ LEBOUR</string>
       <string>WIDTH</string>
      </property>
     </widget>
+   </item>
+   <item row="8" column="5">
+    <widget class="QDoubleSpinBox" name="widthDoubleSpinBox"/>
    </item>
    <item row="8" column="9">
     <widget class="QLabel" name="chainLockLabel">
@@ -1166,6 +1247,62 @@ STEMP</string>
      </property>
     </widget>
    </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="approxProductWtLabel">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>APPROX 
+PRODUCT Wt.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1">
+    <widget class="QDoubleSpinBox" name="approxWeightDoubleSpinBox"/>
+   </item>
+   <item row="9" column="2">
+    <widget class="QLabel" name="approxProductWtLabel_2">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>APPROX 
+DIMOND Wt.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="3">
+    <widget class="QDoubleSpinBox" name="approxDiaWeightDoubleSpinBox"/>
+   </item>
    <item row="9" column="4">
     <widget class="QLabel" name="heightLabel">
      <property name="minimumSize">
@@ -1184,6 +1321,9 @@ STEMP</string>
       <string>HEIGHT</string>
      </property>
     </widget>
+   </item>
+   <item row="9" column="5">
+    <widget class="QDoubleSpinBox" name="heightDoubleSpinBox"/>
    </item>
    <item row="9" column="9">
     <widget class="QLabel" name="polishLabel">
@@ -1317,6 +1457,13 @@ STEMP</string>
      </property>
     </widget>
    </item>
+   <item row="11" column="6" rowspan="5" colspan="3">
+    <widget class="ImageClickLabel" name="imageLabel2">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </item>
    <item row="11" column="10">
     <widget class="QLabel" name="payMethodLabel">
      <property name="minimumSize">
@@ -1370,6 +1517,9 @@ STEMP</string>
       <string>ADVANCE</string>
      </property>
     </widget>
+   </item>
+   <item row="11" column="13">
+    <widget class="QDoubleSpinBox" name="advanceDoubleSpinBox"/>
    </item>
    <item row="12" column="0">
     <widget class="QLabel" name="diaPacificLabel">
@@ -1475,6 +1625,9 @@ STEMP</string>
       <string>TOTAL AMOUNT</string>
      </property>
     </widget>
+   </item>
+   <item row="12" column="11">
+    <widget class="QDoubleSpinBox" name="totalAmountDoubleSpinBox"/>
    </item>
    <item row="12" column="12">
     <widget class="QLabel" name="remainingLabel">
@@ -1689,6 +1842,9 @@ STEMP</string>
      </property>
     </widget>
    </item>
+   <item row="15" column="1">
+    <widget class="QDoubleSpinBox" name="diaPriceDoubleSpinBox"/>
+   </item>
    <item row="15" column="4">
     <widget class="QLabel" name="stPriceLabel">
      <property name="minimumSize">
@@ -1707,6 +1863,9 @@ STEMP</string>
       <string>ST. PRICE</string>
      </property>
     </widget>
+   </item>
+   <item row="15" column="5">
+    <widget class="QDoubleSpinBox" name="stPriceDoubleSpinBox"/>
    </item>
    <item row="16" column="0">
     <widget class="QLabel" name="jobNoLabel_2">
@@ -1890,152 +2049,15 @@ STEMP</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
-    <widget class="QSpinBox" name="productPisSpinBox"/>
-   </item>
-   <item row="9" column="1">
-    <widget class="QDoubleSpinBox" name="approxWeightDoubleSpinBox"/>
-   </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="approxProductWtLabel">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>APPROX 
-PRODUCT Wt.</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="2">
-    <widget class="QLabel" name="approxProductWtLabel_2">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>APPROX 
-DIMOND Wt.</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="3">
-    <widget class="QDoubleSpinBox" name="approxDiaWeightDoubleSpinBox"/>
-   </item>
-   <item row="5" column="3">
-    <widget class="QDoubleSpinBox" name="metalPriceDoubleSpinBox"/>
-   </item>
-   <item row="12" column="11">
-    <widget class="QDoubleSpinBox" name="totalAmountDoubleSpinBox"/>
-   </item>
-   <item row="11" column="13">
-    <widget class="QDoubleSpinBox" name="advanceDoubleSpinBox"/>
-   </item>
-   <item row="6" column="6" rowspan="5" colspan="3">
-    <widget class="QLabel" name="imageLabe1">
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="6" rowspan="5" colspan="3">
-    <widget class="QLabel" name="imageLabel2">
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="4">
-    <widget class="QLineEdit" name="partyNameLineEdit">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="5">
-    <widget class="QLineEdit" name="partyIdLineEdit"/>
-   </item>
-   <item row="5" column="5">
-    <widget class="QDoubleSpinBox" name="sizeNoDoubleSpinBox"/>
-   </item>
-   <item row="6" column="5">
-    <widget class="QDoubleSpinBox" name="sizeMMDoubleSpinBox"/>
-   </item>
-   <item row="7" column="5">
-    <widget class="QDoubleSpinBox" name="lengthDoubleSpinBox"/>
-   </item>
-   <item row="8" column="5">
-    <widget class="QDoubleSpinBox" name="widthDoubleSpinBox"/>
-   </item>
-   <item row="9" column="5">
-    <widget class="QDoubleSpinBox" name="heightDoubleSpinBox"/>
-   </item>
-   <item row="15" column="1">
-    <widget class="QDoubleSpinBox" name="diaPriceDoubleSpinBox"/>
-   </item>
-   <item row="15" column="5">
-    <widget class="QDoubleSpinBox" name="stPriceDoubleSpinBox"/>
-   </item>
-   <item row="5" column="7" colspan="2">
-    <widget class="QLineEdit" name="designNoLineEdit">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ImageClickLabel</class>
+   <extends>QLabel</extends>
+   <header>imageclicklabel.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -15,6 +15,11 @@ public:
     explicit AccountantWindow(QWidget *parent = nullptr);
     ~AccountantWindow();
 
+private slots:
+    void changeRole();
+
+    void openOrderList();
+
 private:
     Ui::AccountantWindow *ui;
 };
